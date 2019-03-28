@@ -46,6 +46,8 @@ class AsyncPaginateBase extends Component {
     cacheUniq: PropTypes.any,
 
     selectRef: PropTypes.func,
+
+    menuIsOpen: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -65,6 +67,7 @@ class AsyncPaginateBase extends Component {
     cacheUniq: null,
 
     selectRef: Function.prototype,
+    menuIsOpen: false,
   };
 
   constructor(props) {
@@ -84,7 +87,7 @@ class AsyncPaginateBase extends Component {
 
     this.state = {
       optionsCache: initialOptionsCache,
-      menuIsOpen: false,
+      menuIsOpen: props.menuIsOpen,
     };
   }
 
