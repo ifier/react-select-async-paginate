@@ -48,6 +48,7 @@ class AsyncPaginateBase extends Component {
     selectRef: PropTypes.func,
 
     menuIsOpen: PropTypes.bool,
+    keepOpen: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -68,6 +69,7 @@ class AsyncPaginateBase extends Component {
 
     selectRef: Function.prototype,
     menuIsOpen: false,
+    keepOpen: false,
   };
 
   constructor(props) {
@@ -121,9 +123,13 @@ class AsyncPaginateBase extends Component {
   }
 
   onMenuClose = () => {
-    this.setState({
-      menuIsOpen: false,
-    });
+    const { keepOpen } = this.props;
+
+    if (!keepOpen) {
+      this.setState({
+        menuIsOpen: false,
+      });
+    }
 
     const {
       onMenuClose,
